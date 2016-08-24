@@ -17,22 +17,6 @@ if (! isset($alter)) {
             <?php
             foreach ($alter as $ref => $produto) {
                 ?>
-                <ul>
-                    <li>ID<?= $produto[ 'proId' ] ?> | REF<?= $ref ?></li>
-                    <ul>
-                        <li>Valor a ser Alterado<?= $produto[ 'valueAlt' ] ?></li>
-                        <li>Valor Original<?= $produto[ 'valueOri' ] ?></li>
-                        <li>Estoque a ser Alterado<?= $produto[ 'stockAlt' ] ?></li>
-                        <li>Estoque Original<?= $produto[ 'stockOri' ] ?></li>
-                    </ul>
-                </ul>
-                <?php
-            }
-            ?>
-
-            <?php
-            foreach ($alter as $ref => $produto) {
-                ?>
                 <table>
                     <tr>
                         <td>REF:</td>
