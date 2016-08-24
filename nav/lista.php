@@ -18,18 +18,47 @@ if (! isset($alter)) {
             foreach ($alter as $ref => $produto) {
                 ?>
                 <ul>
-                    <li>ID: <?= $produto[ 'proId' ] ?> | REF: <?= $ref ?></li>
+                    <li>ID<?= $produto[ 'proId' ] ?> | REF<?= $ref ?></li>
                     <ul>
-                        <li>Valor a ser Alterado: <?= $produto[ 'valueAlt' ] ?></li>
-                        <li>Valor Original: <?= $produto[ 'valueOri' ] ?></li>
-                        <li>Estoque a ser Alterado: <?= $produto[ 'stockAlt' ] ?></li>
-                        <li>Estoque Original: <?= $produto[ 'stockOri' ] ?></li>
+                        <li>Valor a ser Alterado<?= $produto[ 'valueAlt' ] ?></li>
+                        <li>Valor Original<?= $produto[ 'valueOri' ] ?></li>
+                        <li>Estoque a ser Alterado<?= $produto[ 'stockAlt' ] ?></li>
+                        <li>Estoque Original<?= $produto[ 'stockOri' ] ?></li>
                     </ul>
                 </ul>
                 <?php
             }
             ?>
 
+
+            <table>
+                <tr>
+                    <td>REF:</td>
+                    <td>Valor à ser Alterado</td>
+                    <td>Valor Original</td>
+                    <td>Estoque à ser Alterado</td>
+                    <td>Estoque Original</td>
+                </tr>
+                <?php
+                foreach ($alter as $ref => $produto) {
+                ?>
+                <tr>
+                    <td>
+                        <!-- ID do Produto -->
+                        <input type="hidden" value="<?= $produto[ 'proId' ] ?>">
+                        <!-- Referência do Produto -->
+                        <?= $ref ?>
+                    </td>
+                    <tr><?= $produto[ 'valueAlt' ] ?></tr>
+                    <tr><?= $produto[ 'valueOri' ] ?></tr>
+                    <tr><?= $produto[ 'stockAlt' ] ?></tr>
+                    <tr><?= $produto[ 'stockOri' ] ?></tr>
+                </tr>
+                    <?php
+                }
+                ?>
+            </table>
+            
         </form>
 
     </body>
