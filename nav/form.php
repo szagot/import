@@ -7,12 +7,12 @@ if (! isset($authorized)) {
 <html lang="pt-br">
     <head>
         <meta charset="UTF-8">
-        <title>Gerador de Planilha da B2W</title>
+        <title>Atualizador de Estoque e Preço</title>
         <link href="nav/estilo.css" rel="stylesheet" type="text/css">
     </head>
     <body>
         <form enctype="multipart/form-data" action="" method="post">
-            <label>Arquivo CSV: <input type="file"></label>
+            <label>Arquivo CSV: <input type="file" name="csv_file"></label>
             <button class="btn" type="submit">Enviar</button>
         </form>
 
