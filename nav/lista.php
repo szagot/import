@@ -48,10 +48,10 @@ if (! isset($alter)) {
                             <!-- Referência do Produto -->
                             <?= $ref ?>
                         </td>
-                        <tr><?= $produto[ 'valueAlt' ] ?></tr>
-                        <tr><?= $produto[ 'valueOri' ] ?></tr>
-                        <tr><?= $produto[ 'stockAlt' ] ?></tr>
-                        <tr><?= $produto[ 'stockOri' ] ?></tr>
+                        <td><?= $produto[ 'valueOri' ] ?></td>
+                        <td><?= $produto[ 'valueAlt' ] ?></td>
+                        <td><?= $produto[ 'stockOri' ] ?></td>
+                        <td><?= $produto[ 'stockAlt' ] ?></td>
                     </tr>
                 </table>
                 <?php
