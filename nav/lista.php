@@ -17,12 +17,12 @@ if (! isset($alter)) {
         <table width="100%" border="0" cellspacing="3" cellpadding="0" align="center">
             <tbody>
             <tr class="title">
-                <td>Referência</td>
-                <td>Nome</td>
-                <td>Valor Atual</td>
-                <td>Valor Enviado</td>
-                <td>Estoque Atual</td>
-                <td>Estoque Enviado</td>
+                <td width="20%">Referência</td>
+                <td width="40%">Nome</td>
+                <td width="10%">Valor Atual</td>
+                <td width="10%">Valor Enviado</td>
+                <td width="10%">Estoque Atual</td>
+                <td width="10%">Estoque Enviado</td>
             </tr>
             <?php
             foreach ($alter as $ref => $produto) {
@@ -36,11 +36,11 @@ if (! isset($alter)) {
                         <!-- Referência do Produto -->
                         <?= $ref ?>
                     </td>
-                    <td><?= $produto[ 'proNome' ] ?></td>
+                    <td align="left"><?= $produto[ 'proNome' ] ?></td>
                     <td><?= $produto[ 'valueOri' ] ?></td>
-                    <td><input type="text" name="value[<?= $proId ?>]" value="<?= $produto[ 'valueAlt' ] ?>"></td>
+                    <td class="alt"><input type="text" name="value[<?= $proId ?>]" value="<?= $produto[ 'valueAlt' ] ?>"></td>
                     <td><?= $produto[ 'stockOri' ] ?></td>
-                    <td><input type="text" name="stock[<?= $proId ?>]" value="<?= $produto[ 'stockAlt' ] ?>"></td>
+                    <td class="alt"><input type="text" name="stock[<?= $proId ?>]" value="<?= $produto[ 'stockAlt' ] ?>"></td>
                 </tr>
                 <?php
             }
@@ -49,7 +49,7 @@ if (! isset($alter)) {
         </table>
     </div>
     <label class="btns">
-        <button class="btn confirma" type="submit">Confima Atualização de Dados</button>
+        <button class="btn confirma" type="submit">Confimar Atualização de Dados</button>
         <button class="btn cancela" type="button" onclick="window.location = './stock.php';">Cancelar</button>
     </label>
 </form>

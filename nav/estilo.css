@@ -15,8 +15,9 @@ p {
 }
 
 form {
+    position: relative;
     display: block;
-    max-width: 446px;
+    max-width: 700px;
     margin: 20px;
     padding: 20px;
     background-color: #f8f8f8;
@@ -35,6 +36,12 @@ form label {
     font-weight: bold;
 }
 
+form .btns {
+    display: block;
+    text-align: right;
+    margin-top: 15px;
+}
+
 form .btn, #dados_up .btn {
     padding: 5px 10px;
     border: 1px solid #a5a5a5;
@@ -44,6 +51,10 @@ form .btn, #dados_up .btn {
 }
 
 form .btn:hover {
+    border-color: #666666;
+}
+
+form .btn:active {
     background: rgba(223, 223, 223, 1);
     background: -moz-linear-gradient(top, rgba(223, 223, 223, 1) 0%, rgba(245, 245, 245, 1) 100%);
     background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(223, 223, 223, 1)), color-stop(47%, rgba(246, 246, 246, 1)), color-stop(100%, rgba(245, 245, 245, 1)));
@@ -54,13 +65,11 @@ form .btn:hover {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#ffffff', GradientType=0);
 }
 
-form .btns {
-    display: block;
-    text-align: right;
-    margin-top: 15px;
-}
-
 form .btns.envio {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -13px;
     text-align: left;
 }
 
@@ -149,15 +158,17 @@ form .btn::before {
 
 /** Tabela de Dados */
 #dados_up {
-    max-width: 700px;
     text-align: center;
 }
 
 #dados_up .title td {
     background: #d3d3d6;
     color: #666;
-    padding: 5px;
     font-weight: bold;
+}
+
+#dados_up td:not(.alt) {
+    padding: 5px;
 }
 
 #dados_up tr:nth-child(even) {
@@ -175,20 +186,42 @@ form .btn::before {
 }
 
 #dados_up input {
-    margin: 5px;
+    width: 100%;
+    margin: 0;
+    padding: 11px 5px;
     text-align: center;
+    box-sizing: border-box;
     border: 1px solid #ccc;
 }
 
-#dados_up .confirma {
+#dados_up input:focus {
+    border-color: #4890d1;
+}
+
+#dados_up .btn.confirma {
     margin-right: 5px;
-    background-color: #8BC34A;
 }
 
-#dados_up .cancela {
-    background-color: #c34a4a;
+#dados_up .btn.confirma:hover {
+    border-color: #8bc34a;
 }
 
-#dados_up .btn:hover {
+#dados_up .btn.cancela:hover {
+    border-color: #c34a4a;
+}
 
+#dados_up .btn.confirma::before {
+    content: '\f00c';
+}
+
+#dados_up .btn.confirma:hover::before {
+    color: #8bc34a;
+}
+
+#dados_up .btn.cancela::before {
+    content: '\f00d';
+}
+
+#dados_up .btn.cancela:hover::before {
+    color: #c34a4a;
 }
