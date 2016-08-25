@@ -5,29 +5,58 @@ if (! isset($authorized)) {
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <title>Atualizador de Estoque e Preço</title>
-        <link href="nav/estilo.css" rel="stylesheet" type="text/css">
-    </head>
-    <body>
-        <form enctype="multipart/form-data" action="" method="post">
-            <label>Arquivo CSV: <input type="file" name="csv_file"></label>
-            <button class="btn" type="submit">Enviar</button>
-        </form>
+<head>
+    <meta charset="UTF-8">
+    <title>Atualizador de Estoque e Preço</title>
+    <link href="nav/estilo.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<form enctype="multipart/form-data" action="" method="post">
+    <label>Arquivo CSV: <input type="file" name="csv_file"></label>
+    <label class="btns envio">
+        <button class="btn envio" type="submit">Enviar</button>
+    </label>
+</form>
 
-        <div id="empty" class="modal-box">
-            <div class="modal-content">
-                <p>
-                    <b>Arquivo inválido</b>
-                </p>
-                <p>
-                    Verifique se o arquivo enviado possui a extensão CSV,
-                    se possui os campos <b>Referência</b>, <b>Valor</b> e <b>Estoque</b> e
-                    se estão separados por ponto-e-vírgula.
-                </p>
-                <a href="#close" class="close-link">X</a>
-            </div>
+<div id="empty" class="modal-box">
+    <div class="modal-content">
+        <p>
+            <b>Arquivo sem registros válidos</b>
+        </p>
+        <p>
+            Verifique se o arquivo enviado possui a extensão CSV,
+            se possui os campos <b>Referência</b>, <b>Valor</b> e <b>Estoque</b> e
+            se estão separados por ponto-e-vírgula.
+        </p>
+        <a href="#close" class="close-link">X</a>
+    </div>
+</div>
+
+<?php
+// Dados foram enviados?
+if (isset($erros)) {
+    ?>
+    <div id="msg" class="modal-box">
+        <div class="modal-content">
+            <p>
+                <b><?= $alterados ?> registro(s) alterado(s).</b>
+            </p>
+            <?php if( count($erros) > 0 ){ ?>
+            <p class="erros">
+                Ocorreram os seguintes erros:<br>
+                <?php foreach($erros as $erro){
+                    echo "<br> - $erro";
+                } ?>
+            </p>
+            <?php } ?>
+            <a href="#close" class="close-link">X</a>
         </div>
-    </body>
+    </div>
+    <script>
+        window.location = '#msg';
+    </script>
+    <?php
+}
+?>
+</body>
 </html>

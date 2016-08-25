@@ -26,19 +26,21 @@ if (! isset($alter)) {
             </tr>
             <?php
             foreach ($alter as $ref => $produto) {
+                $proId = $produto[ 'proId' ];
                 ?>
                 <tr class="prod">
                     <td>
                         <!-- ID do Produto -->
-                        <input type="hidden" name="pro_id" value="<?= $produto[ 'proId' ] ?>">
+                        <input type="hidden" name="pro_id[]" value="<?= $proId ?>">
+                        <input type="hidden" name="pro_ref[<?= $proId ?>]" value="<?= $ref ?>">
                         <!-- Referência do Produto -->
                         <?= $ref ?>
                     </td>
                     <td><?= $produto[ 'proNome' ] ?></td>
                     <td><?= $produto[ 'valueOri' ] ?></td>
-                    <td><input type="text" name="value" value="<?= $produto[ 'valueAlt' ] ?>"></td>
+                    <td><input type="text" name="value[<?= $proId ?>]" value="<?= $produto[ 'valueAlt' ] ?>"></td>
                     <td><?= $produto[ 'stockOri' ] ?></td>
-                    <td><input type="text" name="stock" value="<?= $produto[ 'stockAlt' ] ?>"></td>
+                    <td><input type="text" name="stock[<?= $proId ?>]" value="<?= $produto[ 'stockAlt' ] ?>"></td>
                 </tr>
                 <?php
             }

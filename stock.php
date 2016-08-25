@@ -7,17 +7,56 @@
  *      100;99.99;20
  */
 
+require_once '../config/conecta.class.php';
+$pdo = new Conecta();
+
+// Verificando se houve salvamento
+$proIds = filter_input_array(INPUT_POST);
+
+if (! empty($proIds)) {
+    // Começa o salvamento dos dados
+    $erros = [];
+    $alterados = 0;
+    foreach ($proIds[ 'pro_id' ] as $proId) {
+        // Verifica se dados são válidos
+        $proIds[ 'value' ][ $proId ] = str_replace(',', '.', $proIds[ 'value' ][ $proId ]);
+        if (! is_numeric($proIds[ 'value' ][ $proId ])) {
+            $erros[] = "O valor <b>{$proIds['value'][$proId]}</b> do produto <b>{$proIds['pro_ref'][$proId]}</b> não é válido";
+            continue;
+        }
+
+        if (! is_numeric($proIds[ 'stock' ][ $proId ])) {
+            $erros[] = "O estoque <b>{$proIds['stock'][$proId]}</b> do produto <b>{$proIds['pro_ref'][$proId]}</b> não é válido";
+            continue;
+        }
+
+        $pdo->zeraVars('produto');
+        $pdo->setVars([
+            'type'   => 'UPDATE',
+            'where'  => "PRO_ID = '$proId'",
+            'campos' => [
+                'PRO_PROMOCAO' => 0,
+                'PRO_VALOR'    => $proIds[ 'value' ][ $proId ],
+                'PRO_ESTOQUE'  => $proIds[ 'stock' ][ $proId ],
+            ]
+        ]);
+
+        if (! $pdo->execute()) {
+            $erros[] = "Ocorreu um ero na atualização do produto. | {$pdo->erro}";
+            continue;
+        }
+
+        $alterados++;
+    }
+}
+
 // Enviado algum arquivo CSV? Se não, vai pro form
 if (! isset($_FILES[ 'csv_file' ]) || ! preg_match('/\.csv$/i', $_FILES[ 'csv_file' ][ 'name' ])) {
-
     // Montando form
     $authorized = true;
     require_once 'nav/form.php';
     exit;
 }
-
-require_once '../config/conecta.class.php';
-$pdo = new Conecta();
 
 // Pegando CSV
 $csv = explode('|', preg_replace('/[\n\r]+/', '|', file_get_contents($_FILES[ 'csv_file' ][ 'tmp_name' ])));
@@ -57,6 +96,12 @@ foreach ($csv as $linha) {
         'proId'    => $produto->PRO_ID,
         'proNome'  => $produto->PRO_NOME,
     ];
+}
+
+// Se não houver itens
+if (count($alter) == 0) {
+    header('Location: ./stock.php#empty');
+    exit;
 }
 
 require_once 'nav/lista.php';
