@@ -15,7 +15,6 @@ p {
 }
 
 form {
-    position: relative;
     display: block;
     max-width: 446px;
     margin: 20px;
@@ -55,10 +54,14 @@ form .btn:hover {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ededed', endColorstr='#ffffff', GradientType=0 );
 }
 
+form .btns {
+    display: block;
+    text-align: right;
+    margin-top: 15px;
+}
+
 form .btn {
-    position: absolute;
-    right: 20px;
-    bottom: 20px;
+    display: inline-block;
     background: rgba(245,245,245,1);
     background: -moz-linear-gradient(top, rgba(245,245,245,1) 0%, rgba(223,223,223,1) 100%);
     background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(245,245,245,1)), color-stop(47%, rgba(246,246,246,1)), color-stop(100%, rgba(223,223,223,1)));
@@ -162,8 +165,6 @@ form .btn::before {
 }
 
 #dados_up .border {
-    max-height: 300px;
-    margin: 10px 0 40px;
     background: #fff;
     border: 1px solid #ccc;
     overflow: auto;
@@ -176,7 +177,7 @@ form .btn::before {
 }
 
 #dados_up .confirma {
-    margin-right: 100px;
+    margin-right: 5px;
     background-color: #8BC34A;
 }
 

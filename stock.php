@@ -36,7 +36,8 @@ foreach ($csv as $linha) {
     $value = (($value * 1) > 0 ? ($value * 1) : 0);
     $estoque = (($estoque * 1) > 0 ? ($estoque * 1) : 0);
 
-    $produto = $pdo->execute("SELECT PRO_ID, PRO_ESTOQUE, PRO_VALOR FROM produto WHERE PRO_REF = '$ref'", true);
+    $produto = $pdo->execute("SELECT PRO_ID, PRO_NOME, PRO_ESTOQUE, PRO_VALOR FROM produto WHERE PRO_REF = '$ref'",
+        true);
 
     // Se produto não encontrado, prossgue
     if (! isset($produto->PRO_ID)) {
@@ -53,7 +54,8 @@ foreach ($csv as $linha) {
         'stockAlt' => $estoque,
         'valueOri' => $produto->PRO_VALOR,
         'stockOri' => $produto->PRO_ESTOQUE,
-        'proId'    => $produto->PRO_ID
+        'proId'    => $produto->PRO_ID,
+        'proNome'  => $produto->PRO_NOME,
     ];
 }
 
