@@ -51,7 +51,7 @@ form .btn, #dados_up .btn {
 }
 
 form .btn:hover {
-    border-color: #666666;
+    border-color: #666;
 }
 
 form .btn:active {
@@ -66,10 +66,6 @@ form .btn:active {
 }
 
 form .btns.envio {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    margin-top: -13px;
     text-align: left;
 }
 
@@ -93,6 +89,31 @@ form .btn::before {
     color: #8a8a8a;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
+}
+
+form .nobreak {
+    white-space: nowrap;
+}
+
+form .modelo {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+form .modelo .title {
+    display: block;
+    padding-left: 2px;
+}
+
+form .modelo pre {
+    margin-top: 5px;
+    border:1px inset #f8f8f8;
+    background: #fff;
+    padding: 8px 10px 0;
+    height: 55px;
+    font: 12px Consolas, 'Courier New', Courier, monospace;
+    line-height: 16px;
 }
 
 /** MODAL BOX */
