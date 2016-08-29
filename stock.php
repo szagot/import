@@ -6,6 +6,16 @@
  *      REF;VALOR;ESTOQUE
  *      100;99.99;20
  */
+if (! isset($_SESSION[ 'TMWXD' ])) {
+    @session_start();
+}
+
+date_default_timezone_set('America/Sao_Paulo');
+
+if ((time() - $_SESSION[ 'TMWXD' ][ 'acesso' ]) > $_SESSION[ 'TMWXD' ][ 'periodo' ]) {
+    // Deslogar ao final do período
+    die('Acesso negado.');
+}
 
 require_once '../config/conecta.class.php';
 $pdo = new Conecta();
@@ -35,9 +45,11 @@ if (! empty($proIds)) {
             'type'   => 'UPDATE',
             'where'  => "PRO_ID = '$proId'",
             'campos' => [
-                'PRO_PROMOCAO' => 0,
-                'PRO_VALOR'    => $proIds[ 'value' ][ $proId ],
-                'PRO_ESTOQUE'  => $proIds[ 'stock' ][ $proId ],
+                'PRO_PROMOCAO'  => 0,
+                'PRO_PROMO_INI' => null,
+                'PRO_PROMO_FIM' => null,
+                'PRO_VALOR'     => $proIds[ 'value' ][ $proId ],
+                'PRO_ESTOQUE'   => $proIds[ 'stock' ][ $proId ],
             ]
         ]);
 

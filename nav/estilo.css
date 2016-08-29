@@ -207,12 +207,15 @@ form .modelo pre {
 }
 
 #dados_up input {
-    width: 100%;
+    width: 80px;
     margin: 0;
     padding: 11px 5px;
     text-align: center;
     box-sizing: border-box;
     border: 1px solid #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 #dados_up input:focus {

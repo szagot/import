@@ -18,9 +18,9 @@ if (! isset($alter)) {
                     <tbody>
                         <tr class="title">
                             <td width="1">Referência</td>
-                            <td>Nome</td>
+                            <td width="">Nome</td>
                             <td width="70">Valor Atual</td>
-                            <td width="60">Valor Enviado</td>
+                            <td width="70">Valor Enviado</td>
                             <td width="60">Estoque Atual</td>
                             <td width="60">Estoque Enviado</td>
                         </tr>
@@ -38,12 +38,12 @@ if (! isset($alter)) {
                                 </td>
                                 <td align="left"><?= $produto[ 'proNome' ] ?></td>
                                 <td class="nobreak">R$ <?= number_format($produto[ 'valueOri' ], 2, ',', '') ?></td>
-                                <td class="alt"><input type="text" name="value[<?= $proId ?>]"
-                                                       value="<?= number_format($produto[ 'valueAlt' ], 2, ',', '') ?>">
+                                <td class="alt"><input type="number" step="any" name="value[<?= $proId ?>]"
+                                                       value="<?= number_format($produto[ 'valueAlt' ], 2, '.', '') ?>">
                                 </td>
                                 <td><?= $produto[ 'stockOri' ] ?></td>
-                                <td class="alt"><input type="text" name="stock[<?= $proId ?>]"
-                                                       value="<?= $produto[ 'stockAlt' ] ?>"></td>
+                                <td class="alt"><input type="number" name="stock[<?= $proId ?>]"
+                                                       value="<?= $produto[ 'stockAlt' ] ?>" min="0"></td>
                             </tr>
                             <?php
                         }
